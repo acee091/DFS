@@ -1,0 +1,12 @@
+ <h1> Olá {{user.name}} {{user.surname}}, seja bem vindo</h1>
+
+{{!-- teste logico --}}
+ {{#if auth}}
+ <p>
+    Você está autenticado no sistema, <a href="/dashbord">Clique aqui</a> 
+    para acessar áre de membros
+ </p>
+ {{/if}}
+
+
+
