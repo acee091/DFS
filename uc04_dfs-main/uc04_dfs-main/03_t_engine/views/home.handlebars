@@ -1,6 +1,6 @@
  <h1> Olá {{user.name}} {{user.surname}}, seja bem vindo</h1>
 
-{{!-- teste logico --}}
+{{!-- teste logico se tiver autenticado para direcionar a pagina de DASHBOARD--}}
  {{#if auth}}
  <p>
     Você está autenticado no sistema, <a href="/dashbord">Clique aqui</a> 
