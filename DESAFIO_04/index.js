@@ -13,7 +13,10 @@ app.get('/', function(req, res){
     }
     res.render('home', {shop: shop})
 })
-
+app.get('/login', function(req, res){
+    const products = ['Blusa', 'Camiseta', 'Calça']
+    res.render('login', {products: products, auth: false})
+})
 app.use(express.static('public'))
 app.listen(5000)
 

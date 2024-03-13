@@ -1,0 +1,8 @@
+    {{#if auth}}
+    <h1>Seja bem-vindo a área de produtos!</h1>
+    {{#ifCond (lookup arr @index) "" }}
+    {{else}}
+    <h1>Você não está logado!</h1>
+    <h2>Volte a <a href="/">área inicial</a></h2>
+    {{/if}}
+    
