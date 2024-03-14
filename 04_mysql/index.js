@@ -42,17 +42,31 @@ app.post('/books/insertbook', function(req,res){
 app.get('/books', function(req,res){
     const query = `SELECT * FROM books`
 
-    conn.query(query, function(err){
+    conn.query(query, function(err, data){
         if(err){
             console.log(err)
         }
         // data = tudo aquilo que vai receber no SELECT do banco de dados
         const books = data
         console.log(data)
-        res.render('books', data)
+        res.render('books', { books })
     })
 })
 
+app.get('/books/:id', function(req, res){
+    // parametro que vai pegar no html
+    const id = req.params.id
+    const query = `SELECT * FROM books WHERE id =${id}`
+
+    conn.query(query, function(err, data){
+        if(err){
+            console.log(err)
+        }
+        const book = data[0]
+        console.log(data[0])
+        res.render('book', { book })
+    })
+})
 
 // conectar o mysql
 const conn = mysql.createConnection({
