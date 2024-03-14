@@ -1,6 +1,27 @@
     {{#if auth}}
     <h1>Seja bem-vindo a área de produtos!</h1>
-    {{#ifCond (lookup arr @index) "" }}
+    <div class="container">
+      <div class="panel active" style="background-image: url('http://media2.saopaulofc.net/media/2213609/img_1079_crop_galeria.jpg')">
+      </div>
+      <div class="panel" style="background-image: url('https://www.spfcpedia.com.br/wallpapers/2022-01-25_escudos-do-sao-paulo_versao2.png')">
+        
+      </div>
+      <div class="panel" style="background-image: url('http://www.saopaulofc.net/media/199886/fundacaodospfc_678x436.jpg')">
+       
+      </div>
+      <div class="panel" style="background-image: url('https://www.spfcpedia.com.br/wallpapers/2022-01-25_genealogia2022.png')">
+        
+      </div>
+      <div class="panel" style="background-image: url('https://images.unsplash.com/photo-1549880338-65ddcdfd017b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80')">
+        
+      </div>
+
+    </div>
+    <ul>
+        {{#each products}}
+        <li><a href="{{this.products}}">{{this}}</a></li>
+        {{/each}}
+    </ul>
     {{else}}
     <h1>Você não está logado!</h1>
     <h2>Volte a <a href="/">área inicial</a></h2>
