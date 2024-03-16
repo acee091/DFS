@@ -39,3 +39,36 @@ h1{
 .bold{
     font-weight: bold;
 }
+
+#book-page{
+    padding: 2rem;
+}
+
+#book-page .container{
+    text-align: center;
+}
+#navbar {
+    border-bottom: 1px solid #ccc;
+    padding: 1em;
+    margin-bottom: 1em;
+  }
+  
+  #navbar ul {
+    display: flex;
+    list-style: none;
+  }
+  
+  #navbar ul li {
+    margin-left: 1em;
+  }
+
+  .actions{
+    margin-top: 1em;
+    display: flex;
+    justify-content: center;
+  }
+
+  .actions a {
+    margin-right: 1em;
+  }
+
