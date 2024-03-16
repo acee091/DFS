@@ -1,0 +1,18 @@
+.banner img{
+    width: 1500px;
+}
+
+ul li{
+    display: flex;
+    padding: 50px;
+}
+
+ul{
+    display: flex;
+    justify-content: space-around;
+    font-size: 20px;
+    
+}
+body{
+    text-align: center;
+}
