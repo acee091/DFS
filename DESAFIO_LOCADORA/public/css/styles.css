@@ -17,6 +17,10 @@ body{
     text-align: center;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
+.table-container{
+    width: 450px;
+    margin: 0 auto;
+}
 *{
     margin: 0;
 }

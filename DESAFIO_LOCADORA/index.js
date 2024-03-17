@@ -49,9 +49,41 @@ app.post('/cadastro/carro', function(req, res){
     })
     res.redirect(`/cadastrocarro`)
 })
+app.get('/consultacliente', function(req, res){
+    const query = `SELECT * FROM tbl_cliente`
+
+    pool.query(query, function(err, data){
+        if(err){console.log(err)}
+
+    const clientes = data
+    console.log(data)
+    res.render('consultacliente', { clientes })
+    })
+})
+
+app.get('/consultacarro', function(req, res){
+    const query = `SELECT * FROM tbl_veiculos`
+
+    pool.query(query, function(err, data){
+        if(err){console.log(err)}
+
+    const carros = data
+    console.log(data)
+    res.render('consultacarro', { carros })
+    })
+})
 
 app.get('/cadastro', function(req, res){
     res.render('cadastro')
+})
+app.get('/carro', function(req, res){
+    res.render('carro')
+})
+app.get('/cliente', function(req, res){
+    res.render('cliente')
+})
+app.get('/consultacliente', function(req, res){
+    res.render('consultacliente')
 })
 
 app.get('/cadastrocarro', function(req, res){

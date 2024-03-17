@@ -1,0 +1,22 @@
+<h1>CLIENTES</h1>
+<div class="table-container">
+    {{#each clientes}}
+  <table>
+    <tr>
+    <th>Id</th>
+    <th>Nome</th>
+    <th>Email</th>
+    <th>Telefone</th>
+    <th>Endereço</th>
+    </tr>
+    
+    <tr>
+        <td>{{this.idCliente}}</td>
+        <td>{{this.nome}}</td>
+        <td>{{this.email}}</td>
+        <td>{{this.telefone}}</td>
+        <td>{{this.endereco}}</td>
+    </tr>
+  </table>
+  {{/each}}
+</div>
