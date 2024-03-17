@@ -1,1 +1,21 @@
-<h1>TESTE</h1>
+<h1>Cadastro de cliente</h1>
+<form class="form" action="/cadastro/cliente" method="post">
+ <div class="form-control">
+    <label for="nome">Nome do cliente:</label>
+    <input type="text" name="nome"  value="{{nome}}">
+  </div>
+  <div class="form-control">
+    <label for="telefone">Telefone do cliente:</label>
+    <input type="text" name="telefone" value="{{telefone}}">
+  </div>
+  <div class="form-control">
+    <label for="email">E-mail do cliente:</label>
+    <input type="email" name="email" value="{{email}}">
+  </div>
+  <div class="form-control">
+    <label for="endereco">Endereço do cliente:</label>
+    <input type="text" name="endereco" value="{{endereco}}">
+  </div>
+  <input type="submit" value="Cadastrar">
+</form>
+
