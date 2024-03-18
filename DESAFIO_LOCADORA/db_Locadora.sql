@@ -30,3 +30,10 @@ create table tbl_reserva(
     CONSTRAINT id_cliente FOREIGN KEY(idCliente) REFERENCES tbl_cliente(IdCliente),
     CONSTRAINT id_veiculo FOREIGN KEY(idVeiculo) REFERENCES tbl_veiculos(IdVeiculo)
 );
+SELECT * FROM tbl_cliente;
+SELECT * FROM tbl_veiculos;
+SELECT * FROM tbl_reserva;
+
+SELECT C.nome, C.telefone, V.placa, V.marca, V.modelo, R.data_inicio, R.data_fim
+FROM tbl_reserva R INNER JOIN tbl_veiculos V ON V.idVeiculo = R.idVeiculo 
+INNER JOIN tbl_cliente C ON C.idCliente = R.idCliente;
