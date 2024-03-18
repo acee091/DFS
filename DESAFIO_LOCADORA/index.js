@@ -49,6 +49,21 @@ app.post('/cadastro/carro', function(req, res){
     })
     res.redirect(`/cadastrocarro`)
 })
+app.post('/cadastro/reserva', function(req, res){
+    const idCliente = req.body.idCliente
+    const idVeiculo = req.body.idVeiculo
+    const data_inicio = req.body.data_inicio
+    const data_fim = req.body.data_fim
+
+    const query = `INSERT INTO tbl_reserva (??, ??, ??, ??) VALUES (?, ?, ?, ?)`
+    const data = ['idCliente', 'idVeiculo', 'data_inicio', 'data_fim',
+    idCliente, idVeiculo, data_inicio, data_fim]
+
+    pool.query(query, data, function(err){
+        if(err){console.log(err)}
+    })
+    res.redirect('/reservas')
+})
 app.get('/consultacliente', function(req, res){
     const query = `SELECT * FROM tbl_cliente`
 
@@ -60,7 +75,17 @@ app.get('/consultacliente', function(req, res){
     res.render('consultacliente', { clientes })
     })
 })
+app.get('/consultareserva', function(req, res){
+    const query = `SELECT C.nome, C.telefone, V.placa, V.marca, V.modelo, R.data_inicio, R.data_fim
+    FROM tbl_reserva R INNER JOIN tbl_veiculos V ON V.idVeiculo = R.idVeiculo 
+    INNER JOIN tbl_cliente C ON C.idCliente = R.idCliente;`
 
+    pool.query(query, function(err, data){
+        const reserva = data
+        console.log(data)
+        res.render('consultareserva', {reserva})
+    })
+})
 app.get('/consultacarro', function(req, res){
     const query = `SELECT * FROM tbl_veiculos`
 
@@ -73,6 +98,12 @@ app.get('/consultacarro', function(req, res){
     })
 })
 
+app.get('/reservas', function(req, res){
+    res.render('reservas')
+})
+app.get('/cadastroreserva', function(req, res){
+    res.render('cadastroreserva')
+})
 app.get('/cadastro', function(req, res){
     res.render('cadastro')
 })
@@ -85,7 +116,6 @@ app.get('/cliente', function(req, res){
 app.get('/consultacliente', function(req, res){
     res.render('consultacliente')
 })
-
 app.get('/cadastrocarro', function(req, res){
     res.render('cadastrocarro')
 })
