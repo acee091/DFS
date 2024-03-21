@@ -53,3 +53,27 @@ h1{
     width: 450px;
     margin: 0 auto;
 }
+
+    #navbar{
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        align-items: center;
+        background-color: #004AAD;
+        color: #fff;
+        height: 70px;
+    }
+    
+    #navbar ul{
+        display: flex;
+        list-style: none;
+    }
+    
+    
+    #navbar ul li a{
+        text-decoration: none;
+        color: #fff;
+    }
+    #navbar a:hover{
+        color:aqua;
+    }
