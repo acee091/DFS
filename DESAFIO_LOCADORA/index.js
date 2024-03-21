@@ -78,7 +78,7 @@ app.get('/consultacliente', function(req, res){
 app.get('/consultareserva', function(req, res){
     const query = `SELECT C.nome, C.telefone, V.placa, V.marca, V.modelo, R.data_inicio, R.data_fim
     FROM tbl_reserva R INNER JOIN tbl_veiculos V ON V.idVeiculo = R.idVeiculo 
-    INNER JOIN tbl_cliente C ON C.idCliente = R.idCliente;`
+    INNER JOIN tbl_cliente C ON C.idCliente = R.idCliente ORDER BY data_fim;`
 
     pool.query(query, function(err, data){
         const reserva = data
@@ -87,7 +87,7 @@ app.get('/consultareserva', function(req, res){
     })
 })
 app.get('/consultacarro', function(req, res){
-    const query = `SELECT * FROM tbl_veiculos`
+    const query = `SELECT * FROM tbl_veiculos ORDER BY marca`
 
     pool.query(query, function(err, data){
         if(err){console.log(err)}
