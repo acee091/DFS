@@ -18,7 +18,7 @@ body{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 .table-container{
-    width: 450px;
+    width: 800px;
     margin: 0 auto;
 }
 *{
@@ -77,3 +77,35 @@ h1{
     #navbar a:hover{
         color:aqua;
     }
+    .table-container {
+        width: 80%;
+        margin: 20px auto;
+    }
+    
+    table {
+        width: 100%;
+        /* //linhas ficarem juntas */
+        border-collapse: collapse;
+    }
+    
+    table th, table td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: center;
+    }
+    
+    table th {
+        background-color: #f2f2f2;
+        font-weight: bold;
+    }
+    
+    /* //seleciona as linhas pares da tabela */
+    table tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+    
+    table tr:hover {
+        background-color: #fff;
+    }
+    
+    

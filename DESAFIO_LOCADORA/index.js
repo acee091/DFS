@@ -56,7 +56,6 @@ app.post('/cadastro/reserva', function(req, res){
     const data_fim = req.body.data_fim
 
     const query = `INSERT INTO tbl_reserva (??, ??, ??, ??) VALUES (?, ?, ?, ?)`
-    const update = `UPDATE tbl_veiculos SET disponibilidade = ${0} WHERE idVeiculo = ${idVeiculo}`
     const data = ['idCliente', 'idVeiculo', 'data_inicio', 'data_fim',
     idCliente, idVeiculo, data_inicio, data_fim]
 
