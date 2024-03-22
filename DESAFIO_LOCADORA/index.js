@@ -49,20 +49,62 @@ app.post('/cadastro/carro', function(req, res){
     })
     res.redirect(`/cadastrocarro`)
 })
+// app.post('/cadastro/reserva', function(req, res){
+//     const idCliente = req.body.idCliente
+//     const idVeiculo = req.body.idVeiculo
+//     const data_inicio = req.body.data_inicio
+//     const data_fim = req.body.data_fim
+
+//     const query = `INSERT INTO tbl_reserva (??, ??, ??, ??) VALUES (?, ?, ?, ?)`
+//     const data = ['idCliente', 'idVeiculo', 'data_inicio', 'data_fim',
+//     idCliente, idVeiculo, data_inicio, data_fim]
+
+//     const updateQuery = `UPDATE tbl_veiculos SET disponibilidade = ? WHERE idVeiculo = ?`;
+//     const updateData = [0, idVeiculo];
+
+//     pool.query(query, data, function(err){
+//         if(err){console.log(err)}
+//     })
+//     pool.query(updateQuery, updateData, function(err) {
+//         if (err) {
+//             console.log("Erro ao atualizar disponibilidade do veículo:", err);
+//             return res.status(500).send("Erro ao atualizar disponibilidade do veículo.");
+//         }
+//     res.redirect('/reservas')
+//     })
+// })
 app.post('/cadastro/reserva', function(req, res){
-    const idCliente = req.body.idCliente
-    const idVeiculo = req.body.idVeiculo
-    const data_inicio = req.body.data_inicio
-    const data_fim = req.body.data_fim
+    const idCliente = req.body.idCliente;
+    const idVeiculo = req.body.idVeiculo;
+    const data_inicio = req.body.data_inicio;
+    const data_fim = req.body.data_fim;
 
-    const query = `INSERT INTO tbl_reserva (??, ??, ??, ??) VALUES (?, ?, ?, ?)`
-    const data = ['idCliente', 'idVeiculo', 'data_inicio', 'data_fim',
-    idCliente, idVeiculo, data_inicio, data_fim]
+    const insertQuery = `INSERT INTO tbl_reserva (idCliente, idVeiculo, data_inicio, data_fim) VALUES (?, ?, ?, ?)`;
+    const insertData = [idCliente, idVeiculo, data_inicio, data_fim];
 
-    pool.query(query, data, function(err){
-        if(err){console.log(err)}
+    const updateQuery = `UPDATE tbl_veiculos SET disponibilidade = ? WHERE idVeiculo = ?`;
+    const updateData = [0, idVeiculo];
+    pool.query("SELECT disponibilidade FROM tbl_veiculos WHERE idVeiculo = ?", [idVeiculo], function(err, results) {
+        if (err) {
+            console.log(err)
+        }
+
+        // // Verificar se o veículo está disponível (disponibilidade = 0)
+        // if (results.length > 0 && results[0].disponibilidade === 0) {
+        //     res.redirect('cadastroindisponivel')
+        // }
+    pool.query(insertQuery, insertData, function(err) {
+        if (err) {
+            console.log(err)
+        }
+        pool.query(updateQuery, updateData, function(err) {
+            if (err) {
+                console.log(err)
+            }
+            res.redirect('/reservas');
+        })
     })
-    res.redirect('/reservas')
+})
 })
 app.get('/consultacliente', function(req, res){
     const query = `SELECT * FROM tbl_cliente`
