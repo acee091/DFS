@@ -71,4 +71,7 @@ h1{
   .actions a {
     margin-right: 1em;
   }
-
+.title-done{
+    text-decoration: line-through;
+    color: #ccc;
+}
