@@ -1,0 +1,27 @@
+<h1>Cadastro de carro</h1>
+<form class="form" action="/cadastro/carro" method="post">
+ <div class="form-control">
+    <label for="marca">Marca do carro:</label>
+    <input type="text" name="marca"  value="{{marca}}" maxlength="80">
+  </div>
+  <div class="form-control">
+    <label for="modelo">Modelo do carro:</label>
+    <input type="text" name="modelo" value="{{modelo}}" maxlength="80">
+  </div>
+  <div class="form-control">
+    <label for="ano">Ano do carro:</label>
+    <input type="number" name="ano" value="{{ano}}" max="2024">
+  </div>
+  <div class="form-control">
+    <label for="placa">Placa do carro:</label>
+    <input type="text" name="placa" value="{{placa}}" maxlength="7">
+  </div>
+  <div class="form-control">
+    <label for="disponibilidade">Disponibilidade: (1/0)</label>
+    <input type="text" name="disponibilidade" value="{{disponibilidade}}" maxlength="1">
+  </div>
+  <input type="submit" value="Cadastrar">
+</form>
+<ul>
+    <li class="btn-voltar"><a href="/carro">Voltar</a></li>
+</ul>
