@@ -11,7 +11,7 @@ const Car = db.define('Car', {
         type: DataTypes.STRING
     },
     ano: {
-        type: DataTypes.NUMBER
+        type: DataTypes.INTEGER
     },
     placa: {
         type: DataTypes.STRING

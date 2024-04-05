@@ -1,0 +1,24 @@
+<h1>Cadastro de cliente</h1>
+<form class="form" action="/cadastro/cliente" method="post">
+ <div class="form-control">
+    <label for="nome">Nome do cliente:</label>
+    <input type="text" name="nome"  value="{{nome}}" maxlength="120">
+  </div>
+  <div class="form-control">
+    <label for="telefone">Telefone do cliente:</label>
+    <input type="text" name="telefone" value="{{telefone}}" maxlength="11">
+  </div>
+  <div class="form-control">
+    <label for="email">E-mail do cliente:</label>
+    <input type="email" name="email" value="{{email}}" maxlength="80">
+  </div>
+  <div class="form-control">
+    <label for="endereco">Endereço do cliente:</label>
+    <input type="text" name="endereco" value="{{endereco}}" maxlength="120">
+  </div>
+  <input type="submit" value="Cadastrar">
+</form>
+
+<ul>
+    <li class="btn-voltar"><a href="/cliente">Voltar</a></li>
+</ul>

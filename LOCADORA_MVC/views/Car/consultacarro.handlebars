@@ -1,0 +1,28 @@
+<h1>CARROS</h1>
+
+<div class="table-container">
+    {{#each Car}}
+  <table>
+    <tr>
+    <th>Id</th>
+    <th>Marca</th>
+    <th>Modelo</th>
+    <th>Ano</th>
+    <th>Placa</th>
+    <th>Disponibilidade</th>
+    </tr>
+    
+    <tr>
+        <td>{{this.idVeiculo}}</td>
+        <td>{{this.marca}}</td>
+        <td>{{this.modelo}}</td>
+        <td>{{this.ano}}</td>
+        <td>{{this.placa}}</td>
+        <td>{{this.disponibilidade}}</td>
+    </tr>
+  </table>
+  {{/each}}
+</div>
+<ul>
+    <li class="btn-voltar"><a href="/carro">Voltar</a></li>
+</ul>
