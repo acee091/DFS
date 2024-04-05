@@ -24,6 +24,8 @@ app.use(
 app.use(express.json())
 
 app.use('/Car', carRouters)
+app.use('/Cliente', clienteRouters)
+app.use('/Reserva', reservaRouters)
 
 
 app.use(express.static('public'))
