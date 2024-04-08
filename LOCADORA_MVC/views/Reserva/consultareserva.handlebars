@@ -1,26 +1,26 @@
 <h1>Reservas</h1>
 <div class="table-container">
-    {{#each Reserva}}
   <table>
+    {{#each reserva}}
     <tr>
-    <th>Nome</th>
-    <th>Telefone</th>
-    <th>Placa</th>
-    <th>Marca</th>
-    <th>Modelo</th>
-    <th>Data Início</th>
-    <th>Data final</th>
+      <th>Nome</th>
+      <th>Telefone</th>
+      <th>Placa</th>
+      <th>Marca</th>
+      <th>Modelo</th>
+      <th>Data Início</th>
+      <th>Data final</th>
     </tr>
     
     <tr>
-        <td>{{this.nome}}</td>
-        <td>{{this.telefone}}</td>
-        <td>{{this.placa}}</td>
-        <td>{{this.marca}}</td>
-        <td>{{this.modelo}}</td>
-        <td>{{this.data_inicio}}</td>
-        <td>{{this.data_fim}}</td>
+      <td>{{nome}}</td>
+      <td>{{telefone}}</td>
+      <td>{{placa}}</td>
+      <td>{{marca}}</td>
+      <td>{{modelo}}</td>
+      <td>{{data_inicio}}</td>
+      <td>{{data_fim}}</td>
     </tr>
+    {{/each}}
   </table>
-  {{/each}}  
-</ul>
+</div>

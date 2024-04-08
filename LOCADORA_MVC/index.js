@@ -1,6 +1,5 @@
 const express = require('express')
 const exphbs = require('express-handlebars')
-
 const app = express()
 const conn = require('./db/conn')
 
@@ -27,7 +26,9 @@ app.use('/Car', carRouters)
 app.use('/Cliente', clienteRouters)
 app.use('/Reserva', reservaRouters)
 
-
+app.get('/', function(req, res){
+    res.render('home')
+})
 app.use(express.static('public'))
 
 conn

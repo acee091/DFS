@@ -4,10 +4,16 @@ module.exports = class CarController{
     static registerCar(req, res){
         res.render('Car/cadastrocarro')
     }
-    static queryCar(req, res){
-        res.render('Car/consultacarro')
+    static inicioCar(req, res){
+        res.render('Car/carroinicio')
     }
-
+    static queryCar(req, res){
+        Car.findAll({raw: true})
+        .then((data) => {
+            res.render(('Car/consultacarro'), {cars: data})
+        })
+        .catch((err)=> console.log(err))
+    }
     static registerCarSave(req, res){
         const car = {
             marca: req.body.marca,
@@ -17,7 +23,7 @@ module.exports = class CarController{
             disponibilidade: req.body.disponibilidade
         }
         Car.create(car)
-        .then(res.redirect('/home'))
+        .then(res.redirect('/Car/inicio'))
         .catch((err) => console.log(err))
     }
 }

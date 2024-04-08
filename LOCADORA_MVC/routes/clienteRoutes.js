@@ -2,8 +2,9 @@ const express = require('express')
 const router = express.Router()
 const ClienteController = require('../controllers/clienteController')
 
-router.get('client', ClienteController.registerCliente)
-router.post('client', ClienteController.registerClienteSave)
-router.get('consultacliente', ClienteController.queryCliente)
+router.get('/register', ClienteController.registerCliente)
+router.post('/register', ClienteController.registerClienteSave)
+router.get('/consulta', ClienteController.queryCliente)
+router.get('/inicio', ClienteController.inicioCliente)
 
 module.exports = router

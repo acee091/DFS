@@ -5,18 +5,24 @@ module.exports = class ClienteController{
         res.render('Cliente/cadastrocliente')
     }
     static queryCliente(req, res){
-        res.render('Cliente/consultacliente')
+        Cliente.findAll({raw: true})
+        .then((data) =>{
+            res.render('Cliente/consultacliente', {cliente: data})
+        })
+        .catch((err)=> console.log(err))
     }
-
+    static inicioCliente(req,res){
+        res.render('Cliente/clienteinicio')
+    }
     static registerClienteSave(req, res){
-        const cliente = {
+        const clientes = {
             nome: req.body.nome,
             endereco: req.body.endereco,
             telefone: req.body.telefone,
             email: req.body.email
         }
-        Cliente.create(cliente)
-        .then(res.redirect('/home'))
+        Cliente.create(clientes)
+        .then(res.redirect('Cliente/register'))
         .catch((err) => console.log(err))
     }
 }

@@ -1,7 +1,7 @@
 <h1>CARROS</h1>
 
 <div class="table-container">
-    {{#each Car}}
+    {{#each cars}}
   <table>
     <tr>
     <th>Id</th>
@@ -13,7 +13,7 @@
     </tr>
     
     <tr>
-        <td>{{this.idVeiculo}}</td>
+        <td>{{this.id}}</td>
         <td>{{this.marca}}</td>
         <td>{{this.modelo}}</td>
         <td>{{this.ano}}</td>
@@ -24,5 +24,5 @@
   {{/each}}
 </div>
 <ul>
-    <li class="btn-voltar"><a href="/carro">Voltar</a></li>
+    <li class="btn-voltar"><a href="/Car/inicio">Voltar</a></li>
 </ul>
