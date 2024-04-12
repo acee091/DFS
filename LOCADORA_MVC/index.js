@@ -2,7 +2,8 @@ const express = require('express')
 const exphbs = require('express-handlebars')
 const app = express()
 const conn = require('./db/conn')
-
+const session = require('express-session')
+const bodyParser = require('body-parser');
 // MODELS
 const Car = require('./models/Car')
 const Cliente = require('./models/Cliente')
@@ -13,6 +14,9 @@ const carRouters = require('./routes/carRoutes')
 const clienteRouters = require('./routes/clienteRoutes')
 const reservaRouters = require('./routes/reservaRoutes')
 
+app.use(bodyParser.urlencoded({extended: false}))
+app.unsubscribe(bodyParser.json())
+app.use(session({secret: "segredo"}))
 app.set('view engine', 'handlebars')
 app.engine('handlebars', exphbs.engine())
 app.use(
@@ -38,3 +42,4 @@ conn
     })
     .catch((err) => console.log(err))
 
+module.exports = app
