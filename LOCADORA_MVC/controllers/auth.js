@@ -1,11 +1,14 @@
 const User = require('../models/User');
 const db = require('../db/conn')
-const app = require('../app');
+const app = require('../index.js/app');
 const bcrypt = require('bcrypt');
 
 module.exports = class Auth {
     static register(req, res){
         res.render('/register')
+    }
+    static login(req, res){
+        res.render('/login')
     }
     static UserRegister(req, res){
         const user = {
@@ -14,30 +17,35 @@ module.exports = class Auth {
             password: req.body.password,
             datacadastro: new Date()
         }
-        let consulta = 'SELECT * FROM user WHERE email LIKE ?'
+            bcrypt.hash(user.password, 10)
+            .then(hash => {
+                user.password = hash;
+                let consulta = 'SELECT * FROM user WHERE email LIKE ?';
 
-        db.query(consulta, [email], function(err, results){
-            if(results.length > 0){
-                var message = 'E-mail já cadastrado';
-                res.render('/register', {message: message})
-            } else{
-                var message = 'Usuário adicionado!'
-                User.create(user)
-                .then(res.redirect('/login', {message: message}))
-            }
+                db.query(consulta, [user.email], function(err, results){
+                    if (results.length > 0) {
+                        var message = 'E-mail já cadastrado';
+                        res.render('/register', {message: message});
+                    } else {
+                        var message = 'Usuário adicionado!';
+                        User.create(user)
+                        .then(() => {
+                            res.redirect('/login', {message: message});
+                        })
+                }
+            });
         })
-    }
-
-    static queryUser(req, res){
+}
+    static UserQuery(req, res){
         User.findAll({raw: true})
         .then((data)=> res.render('/profile', {users: data}))
     }
-    static sessionDestroy(req, res){
+    static SessionDestroy(req, res){
         var message = "";
         req.session.destroy()
         res.render('/register', {message:message}) 
     }
-    static userDelete(req, res){
+    static UserDelete(req, res){
         const email = req.session.email
         var message = 'Usuário excluído!'
         User.destroy({
@@ -46,7 +54,7 @@ module.exports = class Auth {
         .then(res.redirect('/'), {message: message})
         .catch((err)=> console.log(err))
     }
-    static userUpdate(req, res){
+    static UserUpdate(req, res){
         const user = {
             nome: req.body.name,
             email: req.body.email,
@@ -68,5 +76,25 @@ module.exports = class Auth {
                 where: {email:email}
             })
         }
+    }
+
+    static UserLogin(req, res){
+        let email = req.body.email
+        let password = req.body.password
+
+        User.findOne({
+            where: {
+                email: email,
+                password: password
+            }
+        })
+        .then((data) =>{
+            if(data){
+                res.render('/')
+            } else{
+                let message = 'Login incorreto'
+                res.render('/login', {message: message})
+            }
+        })
     }
 }
